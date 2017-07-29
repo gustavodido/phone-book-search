@@ -6,3 +6,8 @@ services:
 deploy:
   provider: heroku
   app: phone-book-search
+  api_key:
+    secure: "425102f8-4b34-4f17-a4c6-3d6e2bc8c099"
+
+before_install:
+ - chmod +x gradlew
