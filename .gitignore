@@ -7,9 +7,6 @@ build/
 *.iml
 *.ipr
 
-# Gradle
-.gradle/
-
 # Compiled class file
 *.class
 
