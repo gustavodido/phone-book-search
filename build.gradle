@@ -1,0 +1,34 @@
+plugins {
+  id 'org.springframework.boot' version '1.5.4.RELEASE'
+}
+
+apply plugin: 'idea'
+
+apply from: 'gradle/scripts/java.gradle'
+apply from: 'gradle/scripts/test.gradle'
+apply from: 'gradle/scripts/spring-boot.gradle'
+apply from: 'gradle/scripts/postgres-docker.gradle'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter-aop')
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile('net.logstash.logback:logstash-logback-encoder:4.6')
+  compile('org.slf4j:slf4j-api:1.7.+')
+  compile('ch.qos.logback:logback-classic:1.+')
+  compile('org.projectlombok:lombok:1.16.16')
+  compile('org.flywaydb:flyway-core:4.2.0')
+
+  compile('org.springframework.boot:spring-boot-starter-actuator')
+  
+  compile('org.springframework.boot:spring-boot-starter-jdbc')
+  
+  compile('org.postgresql:postgresql:42.1.1')
+          
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+  testCompile('org.assertj:assertj-core:3.4.0')
+  testCompile('com.jayway.jsonpath:json-path:2.2.0')
+}
