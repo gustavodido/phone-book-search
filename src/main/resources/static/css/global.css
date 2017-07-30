@@ -1,0 +1,70 @@
+body {
+    padding-top: 60px;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.ml-top-10 {
+    margin-top: 15px;
+    margin-bottom: 0 !important;
+}
+
+
+.contact-letter {
+    font-size: 16px;
+    padding-top: 5px;
+    font-weight: bolder;
+}
+
+.contact-name {
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.custom-padding {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.phone-divisor {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.border-color {
+    border-bottom: solid 1px #eeeeee;
+}
+
+.navbar-header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.media {
+    /*box-shadow:0px 0px 4px -2px #000;*/
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.dp {
+    border: 10px solid #eee;
+    transition: all 0.2s ease-in-out;
+}
+
+.dp:hover {
+    border: 2px solid #eee;
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    /*-webkit-font-smoothing:antialiased;*/
+}
