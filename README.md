@@ -9,4 +9,7 @@ The goal, requirements and all business related information is hidden because of
 ## Technology stack 
 
 
+Ph
 
+Object Pattern
+Npm vs Yarn
