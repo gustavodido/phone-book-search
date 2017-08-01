@@ -14,7 +14,7 @@ class PhoneBook extends React.Component {
     };
 
     render() {
-        return <div>Hello React.</div>
+        return <div>Hello React 2.</div>
     }
 }
 

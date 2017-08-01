@@ -1,5 +1,6 @@
 plugins {
   id 'org.springframework.boot' version '1.5.4.RELEASE'
+  id "com.moowork.node" version "0.11"
 }
 
 apply plugin: 'idea'
@@ -8,6 +9,7 @@ apply from: 'gradle/scripts/java.gradle'
 apply from: 'gradle/scripts/test.gradle'
 apply from: 'gradle/scripts/spring-boot.gradle'
 apply from: 'gradle/scripts/postgres-docker.gradle'
+apply from: 'gradle/scripts/front-end.gradle'
 
 repositories {
   jcenter()
