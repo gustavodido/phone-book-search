@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import NavBar from './containers/NavBar.js';
 import ResponsiveContainer from './containers/ResponsiveContainer.js';
-import Row from './containers/Row.js';
-import Column from './containers/Column.js';
-import ModialDialog from './containers/ModalDialog.js';
+import ModalDialog from './containers/ModalDialog.js';
+
+import SearchBar from './components/SearchBar.js';
+import SearchResult from './components/SearchResult.js';
+
 
 const refreshReact = () => {
     ReactDOM.render(
@@ -21,15 +23,13 @@ class PhoneBook extends React.Component {
 
     render() {
         return <div>
-            <NavBar />
+            <NavBar>
+                <SearchBar />
+            </NavBar>
             <ResponsiveContainer>
-                <Row>
-                    <Column>
-                        Body
-                    </Column>
-                </Row>
+                <SearchResult />
             </ResponsiveContainer>
-            <ModialDialog />
+            <ModalDialog />
         </div>
     };
 }
