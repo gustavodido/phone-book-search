@@ -13,3 +13,13 @@ Ph
 
 Object Pattern
 Npm vs Yarn
+Typescript
+React unit testing with Enzyme
+Hot loader
+Modularized CSS not needed because of bootstrap
+Vendor resources not bundled
+
+Remove warnings
+npm WARN package.json @ No repository field.
+npm WARN package.json @ No license field.
+npm WARN prefer global npm@2.14.12 should be installed with -g

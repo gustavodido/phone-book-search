@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import NavBar from './containers/NavBar.js';
+import ResponsiveContainer from './containers/ResponsiveContainer.js';
+import Row from './containers/Row.js';
+import Column from './containers/Column.js';
+import ModialDialog from './containers/ModalDialog.js';
+
 const refreshReact = () => {
     ReactDOM.render(
         <PhoneBook />,
@@ -14,8 +20,18 @@ class PhoneBook extends React.Component {
     };
 
     render() {
-        return <div>Hello React 2.</div>
-    }
+        return <div>
+            <NavBar />
+            <ResponsiveContainer>
+                <Row>
+                    <Column>
+                        Body
+                    </Column>
+                </Row>
+            </ResponsiveContainer>
+            <ModialDialog />
+        </div>
+    };
 }
 
 refreshReact();
