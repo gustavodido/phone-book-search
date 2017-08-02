@@ -7,6 +7,8 @@ import ModalDialog from './containers/ModalDialog.js';
 
 import SearchBar from './components/SearchBar.js';
 import SearchResult from './components/SearchResult.js';
+import ContactProfile from './components/ContactProfile.js';
+import ContactManagement from './components/ContactManagement.js';
 
 
 const refreshReact = () => {
@@ -29,7 +31,12 @@ class PhoneBook extends React.Component {
             <ResponsiveContainer>
                 <SearchResult />
             </ResponsiveContainer>
-            <ModalDialog />
+            <ModalDialog title="Gustavo Di Domenico" modal="contact-profile">
+                <ContactProfile />
+            </ModalDialog>
+            <ModalDialog title="Add new contact" modal="contact-management">
+                <ContactManagement />
+            </ModalDialog>
         </div>
     };
 }

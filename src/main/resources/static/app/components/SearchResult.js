@@ -9,15 +9,15 @@ import Button from '../elements/Button.js'
 const SearchResult = (props) => {
     return (
         <ResponsiveContainer>
-            <Row>
+            <Row hasBorder={ true }>
                 <Column>
                     <div className="pull-left contact-letter">D</div>
                 </Column>
             </Row>
-            <Row>
+            <Row hasBorder={ true }>
                 <Column>
                     <div className="pull-left contact-name">
-                        <a href="#profileModal" data-toggle="modal">Daniela Krizysmiky</a></div>
+                        <a href="#contact-profile" data-toggle="modal">Daniela Krizysmiky</a></div>
                     <div className="pull-right">
                         <Button icon="glyphicon-minus-sign" />
                     </div>
