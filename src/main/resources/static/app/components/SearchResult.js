@@ -10,7 +10,6 @@ const SearchResult = (props) => {
 
     const contacts = (letter) => {
         return (props.results[letter].map(contact => {
-            console.log(contact);
             return (
                 <Row hasBorder={ true }>
                     <Column>
