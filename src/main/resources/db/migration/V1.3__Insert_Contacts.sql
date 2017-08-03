@@ -1,0 +1,16 @@
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Gustavo', 'Di Domenico', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Tuany', 'Muller', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Guilherme', 'Dias', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Melina', 'Deraldo', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Desiree', 'Santos', '55 54 996253909', '', '');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Roni', 'Di Domenico', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Eluisete', 'Muller', '55 54 996253909', '', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Mariane', 'Ferroni', '55 54 996253909', '55 54 996253909', '');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Daniela', 'Krizsmiky', '', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Gustavo', 'Azevedo', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Tayna', 'Fernandes', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Gabriela', 'Correa', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Aldovi', 'Di Domenico', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Matheus', 'Kerkhoff', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Andressa', 'Cruz', '55 54 996253909', '55 54 996253909', '55 54 996253909');
+INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone) values (uuid_generate_v4(), 'Caroline', 'Moers', '55 54 996253909', '55 54 996253909', '55 54 996253909');

@@ -1,6 +1,7 @@
 plugins {
   id 'org.springframework.boot' version '1.5.4.RELEASE'
   id "com.moowork.node" version "0.11"
+  id "org.flywaydb.flyway" version "4.2.0"
 }
 
 apply plugin: 'idea'
@@ -10,6 +11,7 @@ apply from: 'gradle/scripts/test.gradle'
 apply from: 'gradle/scripts/spring-boot.gradle'
 apply from: 'gradle/scripts/postgres-docker.gradle'
 apply from: 'gradle/scripts/front-end.gradle'
+apply from: 'gradle/scripts/flyway.gradle'
 
 repositories {
   jcenter()
