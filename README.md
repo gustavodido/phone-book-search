@@ -11,6 +11,7 @@ The goal, requirements and all business related information is hidden because of
 
 Ph
 
+Loading state
 Object Pattern
 Npm vs Yarn
 Typescript

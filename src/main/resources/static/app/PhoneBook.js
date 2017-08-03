@@ -10,6 +10,7 @@ import SearchResult from './components/SearchResult.js';
 import ContactProfile from './components/ContactProfile.js';
 import ContactManagement from './components/ContactManagement.js';
 
+import ContactsApi from './api/ContactsApi';
 
 const refreshReact = () => {
     ReactDOM.render(
@@ -21,7 +22,19 @@ const refreshReact = () => {
 class PhoneBook extends React.Component {
     constructor(props) {
         super(props);
+        
+        this.state = {
+            contacts: []
+        }
     };
+
+    componentDidMount() {
+        var self = this;
+
+        var api = new ContactsApi();
+        api.list()
+            .then((data) => self.setState({ contacts: data}));
+    }
 
     render() {
         return <div>
@@ -29,7 +42,7 @@ class PhoneBook extends React.Component {
                 <SearchBar />
             </NavBar>
             <ResponsiveContainer>
-                <SearchResult />
+                <SearchResult results={ this.state.contacts } />
             </ResponsiveContainer>
             <ModalDialog title="Gustavo Di Domenico" modal="contact-profile">
                 <ContactProfile />
