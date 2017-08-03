@@ -1,7 +1,0 @@
-flyway {
-    user = System.getenv('DATABASE_USERNAME') ?: 'postgres'
-    password = System.getenv('DATABASE_PASSWORD') ?: 'postgres'
-    url = System.getenv('DATABASE_URL') ?: 'jdbc:postgresql://localhost:8092/phone-book-search'
-    driver = 'org.postgresql.Driver'
-    validateOnMigrate = false
-}

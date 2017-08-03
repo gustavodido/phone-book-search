@@ -1,11 +1,18 @@
 package phonebook.domain.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Value;
 
-@Data
+import java.util.UUID;
+
+@Value
 @AllArgsConstructor
 public class Contact {
+    private UUID uuid;
     private String firstName;
     private String lastName;
+    private String homePhone;
+    private String workPhone;
+    private String mobilePhone;
+
 }

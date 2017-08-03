@@ -36,8 +36,12 @@ public class ContactControllerTest {
         mockMvc.perform(get("/api/contacts"))
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$[*].uuid", hasItems(gustavo.getUuid().toString(), tuany.getUuid().toString())))
                 .andExpect(jsonPath("$[*].firstName", hasItems(gustavo.getFirstName(), tuany.getFirstName())))
-                .andExpect(jsonPath("$[*].lastName", hasItems(gustavo.getLastName(), tuany.getLastName())));
+                .andExpect(jsonPath("$[*].lastName", hasItems(gustavo.getLastName(), tuany.getLastName())))
+                .andExpect(jsonPath("$[*].homePhone", hasItems(gustavo.getHomePhone(), tuany.getHomePhone())))
+                .andExpect(jsonPath("$[*].workPhone", hasItems(gustavo.getWorkPhone(), tuany.getWorkPhone())))
+                .andExpect(jsonPath("$[*].mobilePhone", hasItems(gustavo.getMobilePhone(), tuany.getMobilePhone())));
     }
 
 }
