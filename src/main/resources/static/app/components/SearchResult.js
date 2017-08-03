@@ -7,7 +7,8 @@ import Column from '../containers/Column.js'
 import Button from '../elements/Button.js'
 
 const SearchResult = (props) => {
-    const contacts = (letter) => {
+
+    const contactsFor = (letter) => {
         return (props.results[letter].map(contact => {
             return (
                 <Row hasBorder={ true }>
@@ -26,8 +27,24 @@ const SearchResult = (props) => {
         }));
     };
 
+    const noContacts = () => {
+        if (Object.keys(props.results).length == 0) {
+            return (
+                <Row>
+                    <Column size="3"/>
+                    <Column size="6">
+                        <div className="well text-center">No contacts found.</div>
+                    </Column>
+                    <Column size="3"/>
+                </Row>
+            )
+        }
+    };
+
     return (
         <ResponsiveContainer>
+            { noContacts() }
+
             { Object.keys(props.results).map(letter => {
                 return (
                     <div>
@@ -36,7 +53,7 @@ const SearchResult = (props) => {
                                 <div className="pull-left contact-letter"> { letter }</div>
                             </Column>
                         </Row>
-                        { contacts(letter) }
+                        { contactsFor(letter) }
                     </div>
                 )
             })}

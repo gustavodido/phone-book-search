@@ -24,7 +24,7 @@ class PhoneBook extends React.Component {
         super(props);
 
         this.state = {
-            contacts: [],
+            contacts: {},
             selectedContact: { }
         }
     };
