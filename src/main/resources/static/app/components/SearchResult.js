@@ -13,13 +13,12 @@ const SearchResult = (props) => {
                 <Row hasBorder={ true }>
                     <Column>
                         <div className="pull-left contact-name">
-
                             <a onClick={ () => props.onContactClick(contact) }>
                                 { contact.firstName } { contact.lastName }
                             </a>
                         </div>
                         <div className="pull-right">
-                            <Button icon="glyphicon-minus-sign"/>
+                            <Button icon="glyphicon-minus-sign" onClick={ () => props.onContactRemoveClick(contact) }/>
                         </div>
                     </Column>
                 </Row>

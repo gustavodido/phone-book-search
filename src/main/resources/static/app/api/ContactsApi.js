@@ -7,6 +7,10 @@ class ContactsApi {
             .then((response) => self.transform(response.data));
     }
 
+    remove(uuid) {
+        return axios.delete('api/contacts/' + uuid);
+    }
+
     transform(data) {
         return data.reduce((aggregation, current) => {
             var letter = current.firstName.toUpperCase()[0];

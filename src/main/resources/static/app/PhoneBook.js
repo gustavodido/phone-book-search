@@ -30,8 +30,11 @@ class PhoneBook extends React.Component {
     };
 
     componentDidMount() {
-        var self = this;
+        this.refreshSearchResults();
+    }
 
+    refreshSearchResults() {
+        var self = this;
         var api = new ContactsApi();
         api.list()
             .then((data) => self.setState({contacts: data}));
@@ -47,6 +50,13 @@ class PhoneBook extends React.Component {
         $("#contact-profile").modal();
     }
 
+    handleOnContactRemoveClick(contact) {
+        var self = this;
+        var api = new ContactsApi();
+        api.remove(contact.uuid)
+            .then((response) => self.refreshSearchResults());
+    }
+
     render() {
 
         return <div>
@@ -55,7 +65,9 @@ class PhoneBook extends React.Component {
             </NavBar>
             <ResponsiveContainer>
                 <SearchResult results={ this.state.contacts }
-                              onContactClick={ (contact) => this.handleOnContactClick(contact) }/>
+                              onContactClick={ (contact) => this.handleOnContactClick(contact) }
+                              onContactRemoveClick = { (contact) => this.handleOnContactRemoveClick(contact) }
+                />
             </ResponsiveContainer>
             <ModalDialog title={ this.state.selectedContact.fullName } modal="contact-profile">
                 <ContactProfile contact={ this.state.selectedContact }/>
