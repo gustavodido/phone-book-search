@@ -7,14 +7,14 @@ import Column from '../containers/Column.js'
 import Button from '../elements/Button.js'
 
 const SearchResult = (props) => {
-
     const contacts = (letter) => {
         return (props.results[letter].map(contact => {
             return (
                 <Row hasBorder={ true }>
                     <Column>
                         <div className="pull-left contact-name">
-                            <a href="#contact-profile" data-toggle="modal">
+
+                            <a onClick={ () => props.onContactClick(contact) }>
                                 { contact.firstName } { contact.lastName }
                             </a>
                         </div>

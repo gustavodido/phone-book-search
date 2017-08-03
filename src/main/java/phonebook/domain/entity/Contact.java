@@ -5,6 +5,8 @@ import lombok.Value;
 
 import java.util.UUID;
 
+import static java.lang.String.format;
+
 @Value
 @AllArgsConstructor
 public class Contact {
@@ -15,4 +17,7 @@ public class Contact {
     private String workPhone;
     private String mobilePhone;
 
+    public String getFullName() {
+        return format("%s %s", firstName, lastName);
+    }
 }

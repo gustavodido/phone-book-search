@@ -22,9 +22,10 @@ const refreshReact = () => {
 class PhoneBook extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            contacts: []
+            contacts: [],
+            selectedContact: { }
         }
     };
 
@@ -33,19 +34,31 @@ class PhoneBook extends React.Component {
 
         var api = new ContactsApi();
         api.list()
-            .then((data) => self.setState({ contacts: data}));
+            .then((data) => self.setState({contacts: data}));
+    }
+
+    handleOnContactClick(contact) {
+        var newState = {
+            contacts: this.state.contacts,
+            selectedContact: contact
+        };
+        this.setState(newState);
+
+        $("#contact-profile").modal();
     }
 
     render() {
+
         return <div>
             <NavBar>
                 <SearchBar />
             </NavBar>
             <ResponsiveContainer>
-                <SearchResult results={ this.state.contacts } />
+                <SearchResult results={ this.state.contacts }
+                              onContactClick={ (contact) => this.handleOnContactClick(contact) }/>
             </ResponsiveContainer>
-            <ModalDialog title="Gustavo Di Domenico" modal="contact-profile">
-                <ContactProfile />
+            <ModalDialog title={ this.state.selectedContact.fullName } modal="contact-profile">
+                <ContactProfile contact={ this.state.selectedContact }/>
             </ModalDialog>
             <ModalDialog title="Add new contact" modal="contact-management">
                 <ContactManagement />

@@ -23,6 +23,10 @@ var config = {
                 query: {
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     },
@@ -33,7 +37,7 @@ var config = {
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify('production')
-          },
+          }
         }),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
