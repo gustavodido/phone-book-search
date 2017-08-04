@@ -51,7 +51,7 @@ An elegant RESTFul solution should implement HATEOAS.
 
 **4. CSS bundling and modularization.**
 
-If I had time to make the application fancy. I would add CCS mnification and component modularization,
+If I had time to make the application fancy. I would add CCS minification and component modularization,
 
 **5. Typescript**
 
@@ -79,4 +79,4 @@ Again, a personal phone book will not scale to a large amount of entries. And if
 
 **4. Why there is a complete pipeline for it (Github, Travis, Heroku) ?**
 
-I am just familiar with the tools, so it is not a huge time investiment.
+I am just familiar with the tools, so it is not a huge time investment.

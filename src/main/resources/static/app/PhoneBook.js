@@ -81,6 +81,10 @@ class PhoneBook extends React.Component {
         var api = new ContactsApi();
         api.save(contact)
             .then((response) => self.refreshSearchResults());
+
+        $("#contact-profile").modal("hide");
+        $("#contact-management").modal("hide");
+
     }
 
     handleOnSearchChange(text) {

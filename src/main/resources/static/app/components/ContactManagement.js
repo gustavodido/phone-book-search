@@ -24,7 +24,9 @@ class ContactManagement extends React.Component {
             fullName: "",
             homePhone: "",
             workPhone: "",
-            mobilePhone: ""
+            mobilePhone: "",
+            firstNameError: false,
+            lastNameError: false
         };
 
         this.baseState = Object.assign({}, this.state);
@@ -36,7 +38,13 @@ class ContactManagement extends React.Component {
     }
 
     handleOnClick(e) {
-        this.props.onSaveContactClick(this.state);
+        if (this.state.firstName == "" || this.state.lastName == "") {
+            this.setState({ firstNameError: this.state.firstName == ""});
+            this.setState({ lastNameError: this.state.lastName == ""});
+        }
+        else {
+            this.props.onSaveContactClick(this.state);
+        }
     }
 
     render() {
@@ -44,7 +52,7 @@ class ContactManagement extends React.Component {
             <ResponsiveContainer>
                 <Row>
                     <Column size="6">
-                        <FormGroup customClasses="has-error">
+                        <FormGroup customClasses={this.state.firstNameError ? "has-error" : ""}>
                             <label for="firstName">First name:</label>
                             <TextInput id="firstName"
                                        placeholder="ex: Gustavo"
@@ -52,11 +60,14 @@ class ContactManagement extends React.Component {
                                        onChange={ (text) => this.setState({ firstName: text } ) }
                                        maxLength="50"
                             />
-                            <span id="helpBlock2" className="help-block text-danger">You must provide a first name.</span>
+                            {
+                                this.state.firstNameError &&
+                                    <span id="helpBlock2" className="help-block text-danger">You must provide a first name.</span>
+                            }
                         </FormGroup>
                     </Column>
                     <Column size="6">
-                        <FormGroup>
+                        <FormGroup customClasses={this.state.lastNameError ? "has-error" : ""}>
                             <label for="lastName">Last name:</label>
                             <TextInput id="lastName"
                                        placeholder="ex: Domenico"
@@ -64,6 +75,10 @@ class ContactManagement extends React.Component {
                                        onChange={ (text) => this.setState({ lastName: text } ) }
                                        maxLength="50"
                             />
+                            {
+                                this.state.lastNameError &&
+                                <span id="helpBlock2" className="help-block text-danger">You must provide a last name.</span>
+                            }
                         </FormGroup>
                     </Column>
                 </Row>
@@ -92,7 +107,8 @@ class ContactManagement extends React.Component {
                     <ModalDialogCloseButton />
                     <Button text="Save changes"
                             customClasses="btn-primary"
-                            onClick={ this.handleOnClick.bind(this) }/>
+                            onClick={ this.handleOnClick.bind(this) }
+                    />
                 </ModalDialogFooter>
             </ResponsiveContainer>
         );

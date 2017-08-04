@@ -12,7 +12,6 @@ const Button = (props) => {
     return (
         <button type="button"
                 className={ cssClass }
-                data-dismiss="modal"
                 onClick={() => props.onClick() }>
 
             { buttonBody }
