@@ -24,9 +24,12 @@ class PhoneBook extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            rawContacts: [],
             contacts: {},
-            selectedContact: {}
+            selectedContact: {},
         }
+
+        this.searchTerm = "";
     };
 
     componentDidMount() {
@@ -36,8 +39,20 @@ class PhoneBook extends React.Component {
     refreshSearchResults() {
         var self = this;
         var api = new ContactsApi();
+
         api.list()
-            .then((data) => self.setState({contacts: data}));
+            .then((data) => self.setState({rawContacts: data }))
+            .then(() => self.filterSearchResults());
+    }
+
+    filterSearchResults() {
+        const regEx = new RegExp(this.searchTerm, 'i');
+
+        const filteredContacts = this.state.rawContacts
+            .filter(contact => regEx.test(contact.fullName));
+
+        var api = new ContactsApi();
+        this.setState({contacts: api.transform(filteredContacts)});
     }
 
     handleOnContactClick(contact) {
@@ -68,11 +83,17 @@ class PhoneBook extends React.Component {
             .then((response) => self.refreshSearchResults());
     }
 
+    handleOnSearchChange(text) {
+        this.searchTerm = text;
+        this.filterSearchResults();
+    }
+
     render() {
         return (
             <Group>
                 <NavBar>
-                    <SearchBar onAddContactClick = { () => this.handleOnAddContactClick() }/>
+                    <SearchBar onAddContactClick = { () => this.handleOnAddContactClick() }
+                               OnSearchChange={ (text) => this.handleOnSearchChange(text) }/>
                 </NavBar>
                 <ResponsiveContainer>
                     <SearchResult results={ this.state.contacts }

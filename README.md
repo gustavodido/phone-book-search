@@ -20,13 +20,7 @@ Hot loader
 Modularized CSS not needed because of bootstrap
 Vendor resources not bundled
 Add hateoas
-Remove warnings
-npm WARN package.json @ No repository field.
-npm WARN package.json @ No license field.
-npm WARN prefer global npm@2.14.12 should be installed with -g
 Refetching data fter you perform an operation
-Fazer o search né
-Put argument captors
 Shutdown gracefully
 Field sizes
 Unique index

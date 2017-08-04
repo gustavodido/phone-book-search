@@ -8,7 +8,7 @@ import Button from '../elements/Button.js'
 const SearchBar = (props) => {
     return (
         <InputGroup>
-            <TextInput placeHolder="Search..."/>
+            <TextInput placeHolder="Search..." onChange={ (text) => props.OnSearchChange(text) } />
             <ButtonInputGroup>
                 <Button icon="glyphicon-plus-sign" onClick={ () => props.onAddContactClick() }/>
             </ButtonInputGroup>

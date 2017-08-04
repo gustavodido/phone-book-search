@@ -1,4 +1,13 @@
 {
+  "name": "Phone book search",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gustavodido/phone-book-search"
+  },
+  "author": "Gustavo Di Domenico",
+  "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.16.2",
     "react": "^15.6.1",

@@ -4,7 +4,7 @@ class ContactsApi {
     list() {
         var self = this;
         return axios.get('/api/contacts')
-            .then((response) => self.transform(response.data));
+            .then((response) => response.data);
     }
 
     remove(uuid) {
