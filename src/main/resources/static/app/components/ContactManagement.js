@@ -49,7 +49,9 @@ class ContactManagement extends React.Component {
                             <TextInput id="firstName"
                                        placeholder="ex: Gustavo"
                                        value={ this.state.firstName }
-                                       onChange={ (text) => this.setState({ firstName: text } ) }/>
+                                       onChange={ (text) => this.setState({ firstName: text } ) }
+                                       maxLength="50"
+                            />
                             <span id="helpBlock2" className="help-block text-danger">You must provide a first name.</span>
                         </FormGroup>
                     </Column>
@@ -59,7 +61,9 @@ class ContactManagement extends React.Component {
                             <TextInput id="lastName"
                                        placeholder="ex: Domenico"
                                        value={ this.state.lastName }
-                                       onChange={ (text) => this.setState({ lastName: text } ) }/>
+                                       onChange={ (text) => this.setState({ lastName: text } ) }
+                                       maxLength="50"
+                            />
                         </FormGroup>
                     </Column>
                 </Row>

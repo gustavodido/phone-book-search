@@ -21,6 +21,5 @@ Modularized CSS not needed because of bootstrap
 Vendor resources not bundled
 Add hateoas
 Refetching data fter you perform an operation
-Shutdown gracefully
-Field sizes
+Shutdown gracefully Doc
 Unique index

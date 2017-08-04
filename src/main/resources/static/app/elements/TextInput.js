@@ -8,6 +8,7 @@ const TextInput = (props) => {
                id={ props.id }
                value={ props.value }
                onChange={ (e) => props.onChange(e.target.value) }
+               maxLength={ props.maxLength }
         />
     );
 };
