@@ -44,12 +44,13 @@ class ContactManagement extends React.Component {
             <ResponsiveContainer>
                 <Row>
                     <Column size="6">
-                        <FormGroup>
+                        <FormGroup customClasses="has-error">
                             <label for="firstName">First name:</label>
                             <TextInput id="firstName"
                                        placeholder="ex: Gustavo"
                                        value={ this.state.firstName }
                                        onChange={ (text) => this.setState({ firstName: text } ) }/>
+                            <span id="helpBlock2" className="help-block text-danger">You must provide a first name.</span>
                         </FormGroup>
                     </Column>
                     <Column size="6">
