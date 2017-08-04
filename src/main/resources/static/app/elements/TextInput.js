@@ -4,7 +4,10 @@ const TextInput = (props) => {
     return (
         <input type="text"
                className={"form-control " + props.customClasses }
-               placeholder={ props.placeHolder}/>
+               placeholder={ props.placeHolder}
+               id={ props.id }
+               onChange={ (e) => props.onChange(e.target.value) }
+        />
     );
 };
 

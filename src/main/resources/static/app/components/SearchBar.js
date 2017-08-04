@@ -10,7 +10,7 @@ const SearchBar = (props) => {
         <InputGroup>
             <TextInput placeHolder="Search..."/>
             <ButtonInputGroup>
-                <Button icon="glyphicon-plus-sign" />
+                <Button icon="glyphicon-plus-sign" onClick={ () => props.onAddContactClick() }/>
             </ButtonInputGroup>
         </InputGroup>
     );

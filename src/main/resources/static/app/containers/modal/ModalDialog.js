@@ -10,13 +10,7 @@ const ModalDialog = (props) => {
                         <h4 className="modal-title">{ props.title }</h4>
                     </div>
                     <div className="modal-body">
-
                         { props.children }
-
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
-                        </div>
                     </div>
                 </div>
             </div>

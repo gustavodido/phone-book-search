@@ -3,6 +3,8 @@ import React from 'react';
 import ResponsiveContainer from '../containers/ResponsiveContainer.js'
 import Row from '../containers/Row.js'
 import Column from '../containers/Column.js'
+import ModalDialogFooter from '../containers/modal/ModalDialogFooter.js'
+import ModalDialogCloseButton from '../containers/modal/ModalDialogCloseButton.js'
 
 const ContactProfile = (props) => {
 
@@ -38,6 +40,9 @@ const ContactProfile = (props) => {
                     </div>
                 </Column>
             </Row>
+            <ModalDialogFooter>
+                <ModalDialogCloseButton />
+            </ModalDialogFooter>
         </ResponsiveContainer>
     );
 };

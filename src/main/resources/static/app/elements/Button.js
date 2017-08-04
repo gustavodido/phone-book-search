@@ -1,9 +1,21 @@
 import React from 'react';
 
 const Button = (props) => {
+    const buttonBody = props.icon ?
+        <span className={ "glyphicon " +  props.icon }></span> :
+        props.text;
+
+    const cssClass = props.customClasses ?
+        "btn " + props.customClasses :
+        "btn btn-default";
+
     return (
-        <button type="button" className="btn btn-default" aria-label="Help" onClick={() => props.onClick() }>
-            <span className={ "glyphicon " +  props.icon }></span>
+        <button type="button"
+                className={ cssClass }
+                data-dismiss="modal"
+                onClick={() => props.onClick() }>
+
+            { buttonBody }
         </button>
     );
 };

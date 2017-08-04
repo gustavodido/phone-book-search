@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import NavBar from './containers/NavBar.js';
 import ResponsiveContainer from './containers/ResponsiveContainer.js';
-import ModalDialog from './containers/ModalDialog.js';
+import ModalDialog from './containers/modal/ModalDialog.js';
+import Group from './containers/groups/Group.js';
 
 import SearchBar from './components/SearchBar.js';
 import SearchResult from './components/SearchResult.js';
@@ -22,10 +23,9 @@ const refreshReact = () => {
 class PhoneBook extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             contacts: {},
-            selectedContact: { }
+            selectedContact: {}
         }
     };
 
@@ -41,12 +41,7 @@ class PhoneBook extends React.Component {
     }
 
     handleOnContactClick(contact) {
-        var newState = {
-            contacts: this.state.contacts,
-            selectedContact: contact
-        };
-        this.setState(newState);
-
+        this.setState({ selectedContact: contact });
         $("#contact-profile").modal();
     }
 
@@ -57,25 +52,34 @@ class PhoneBook extends React.Component {
             .then((response) => self.refreshSearchResults());
     }
 
-    render() {
+    handleOnAddContactClick() {
+        $("#contact-management").modal("show");
+    }
 
-        return <div>
-            <NavBar>
-                <SearchBar />
-            </NavBar>
-            <ResponsiveContainer>
-                <SearchResult results={ this.state.contacts }
-                              onContactClick={ (contact) => this.handleOnContactClick(contact) }
-                              onContactRemoveClick = { (contact) => this.handleOnContactRemoveClick(contact) }
-                />
-            </ResponsiveContainer>
-            <ModalDialog title={ this.state.selectedContact.fullName } modal="contact-profile">
-                <ContactProfile contact={ this.state.selectedContact }/>
-            </ModalDialog>
-            <ModalDialog title="Add new contact" modal="contact-management">
-                <ContactManagement />
-            </ModalDialog>
-        </div>
+    handleOnSaveContactClick(contact) {
+        console.log(contact);
+    }
+
+    render() {
+        return (
+            <Group>
+                <NavBar>
+                    <SearchBar onAddContactClick = { () => this.handleOnAddContactClick() }/>
+                </NavBar>
+                <ResponsiveContainer>
+                    <SearchResult results={ this.state.contacts }
+                                  onContactClick={ (contact) => this.handleOnContactClick(contact) }
+                                  onContactRemoveClick={ (contact) => this.handleOnContactRemoveClick(contact) }/>
+                </ResponsiveContainer>
+                <ModalDialog title={ this.state.selectedContact.fullName } modal="contact-profile">
+                    <ContactProfile contact={ this.state.selectedContact }/>
+                </ModalDialog>
+                <ModalDialog title="Add new contact" modal="contact-management">
+                    <ContactManagement contact={ this.state.selectedContact }
+                                       onSaveContactClick={ (contact) => this.handleOnSaveContactClick(contact) } />
+                </ModalDialog>
+            </Group>
+        )
     };
 }
 

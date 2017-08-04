@@ -5,44 +5,81 @@ import Row from '../containers/Row.js'
 import Column from '../containers/Column.js'
 import FormGroup from '../containers/groups/FormGroup.js'
 import Panel from '../containers/Panel.js'
+import ModalDialogFooter from '../containers/modal/ModalDialogFooter.js'
+import ModalDialogCloseButton from '../containers/modal/ModalDialogCloseButton.js'
+
+import Button from '../elements/Button.js'
+import TextInput from '../elements/TextInput.js'
 
 import PhoneField from './PhoneField.js'
 
-const ContactManagement = (props) => {
-    return (
-        <ResponsiveContainer>
-            <Row>
-                <Column size="6">
-                    <FormGroup>
-                        <label for="exampleInputEmail1">First name:</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" placeholder="ex: Gustavo"/>
-                    </FormGroup>
-                </Column>
-                <Column size="6">
-                    <FormGroup>
-                        <label for="exampleInputPassword1">Last name:</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1"
-                               placeholder="ex: Domenico"/>
-                    </FormGroup>
-                </Column>
-            </Row>
-            <Row>
-                <Column>
-                    <Panel title="Phones">
-                        <ResponsiveContainer>
-                            <Column size="2"></Column>
-                            <Column size="8">
-                                <PhoneField label="Home"/>
-                                <PhoneField label="Work"/>
-                                <PhoneField label="Mobile"/>
-                            </Column>
-                            <Column size="2"></Column>
-                        </ResponsiveContainer>
-                    </Panel>
-                </Column>
-            </Row>
-        </ResponsiveContainer>
-    );
-};
+class ContactManagement extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            lastName: "",
+            homePhone: "",
+            workPhone: "",
+            mobilePhone: ""
+        }
+    };
+
+    handleFirstNameChange(text) {
+        this.setState({firstName: text});
+    }
+
+    handleLastNameChange(text) {
+        this.setState({lastName: text});
+    }
+
+    render() {
+        return (
+            <ResponsiveContainer>
+                <Row>
+                    <Column size="6">
+                        <FormGroup>
+                            <label for="firstName">First name:</label>
+                            <TextInput id="firstName"
+                                       placeholder="ex: Gustavo"
+                                       onChange={ (text) => this.setState({ firstName: text } ) }/>
+                        </FormGroup>
+                    </Column>
+                    <Column size="6">
+                        <FormGroup>
+                            <label for="lastName">Last name:</label>
+                            <TextInput id="lastName"
+                                       placeholder="ex: Domenico"
+                                       onChange={ (text) => this.setState({ lastName: text } ) }/>
+                        </FormGroup>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column>
+                        <Panel title="Phones">
+                            <ResponsiveContainer>
+                                <Column size="2"></Column>
+                                <Column size="8">
+                                    <PhoneField label="Home" onChange={ (text) => this.setState({ homePhone: text }) }/>
+                                    <PhoneField label="Work"
+                                                onChange={ (text) => this.setState({ workPhone: text } ) }/>
+                                    <PhoneField label="Mobile"
+                                                onChange={ (text) => this.setState({ mobilePhone: text } ) }/>
+                                </Column>
+                                <Column size="2"></Column>
+                            </ResponsiveContainer>
+                        </Panel>
+                    </Column>
+                </Row>
+                <ModalDialogFooter>
+                    <ModalDialogCloseButton />
+                    <Button text="Save changes"
+                            customClasses="btn-primary"
+                            onClick={ () => console.log(this.state) }/>
+                </ModalDialogFooter>
+            </ResponsiveContainer>
+        );
+    };
+}
 
 export default ContactManagement;
