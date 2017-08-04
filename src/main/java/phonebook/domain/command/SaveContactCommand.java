@@ -1,6 +1,7 @@
 package phonebook.domain.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import phonebook.domain.entity.Contact;
@@ -12,9 +13,11 @@ import static org.springframework.util.Assert.notNull;
 @Component
 public class SaveContactCommand {
 
-    private static final String INSERT_COMMAND =
-            "INSERT INTO contacts (uuid, first_name, last_name, home_phone, work_phone, mobile_phone)" +
-                    " VALUES (?, ?, ?, ?, ?, ?)";
+    @Value("${database.contact.insert}")
+    private String insertCommand;
+
+    @Value("${database.contact.update}")
+    private String updateCommand;
 
     private JdbcTemplate jdbcTemplate;
 
@@ -26,16 +29,24 @@ public class SaveContactCommand {
     public UUID run(Contact contact) {
         notNull(contact, "You must pass a contact to the save command.");
 
-        UUID uuid = UUID.randomUUID();
+        UUID uuid = contact.getUuid();
+        String sqlCommand = updateCommand;
 
-        jdbcTemplate.update(INSERT_COMMAND,
-                uuid,
+        if (contact.getUuid() == null) {
+            uuid = UUID.randomUUID();
+            sqlCommand = insertCommand;
+        }
+
+        jdbcTemplate.update(sqlCommand,
                 contact.getFirstName(),
                 contact.getLastName(),
                 contact.getHomePhone(),
                 contact.getWorkPhone(),
-                contact.getMobilePhone());
+                contact.getMobilePhone(),
+                uuid);
 
         return uuid;
     }
+
+
 }

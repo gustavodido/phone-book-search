@@ -1,6 +1,7 @@
 package phonebook.domain.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -12,10 +13,8 @@ import java.util.UUID;
 @Component
 public class ContactsQuery {
 
-    private static final String SQL_QUERY =
-            "SELECT uuid, first_name, last_name, home_phone, work_phone, mobile_phone " +
-                    "FROM contacts " +
-                    "ORDER BY first_name, last_name";
+    @Value("${database.contact.list}")
+    private String sqlQuery;
 
     private JdbcTemplate jdbcTemplate;
 
@@ -34,6 +33,6 @@ public class ContactsQuery {
                         rs.getString("mobile_phone")
                 );
 
-        return jdbcTemplate.query(SQL_QUERY, new Object[]{}, contactRowMapper);
+        return jdbcTemplate.query(sqlQuery, new Object[]{}, contactRowMapper);
     }
 }

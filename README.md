@@ -28,3 +28,5 @@ Refetching data fter you perform an operation
 Fazer o search né
 Put argument captors
 Shutdown gracefully
+Field sizes
+Unique index

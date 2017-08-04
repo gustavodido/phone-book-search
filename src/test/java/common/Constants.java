@@ -10,5 +10,6 @@ public final class Constants {
     }
 
     public static final Contact gustavo = new Contact(UUID.randomUUID(), "Gustavo", "Domenico", "123", "456", "789");
+    public static final Contact newContact = new Contact(null, "Gustavo", "Domenico", "123", "456", "789");
     public static final Contact tuany = new Contact(UUID.randomUUID(), "Tuany", "Muller", "987", "654", "321");
 }
