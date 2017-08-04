@@ -11,6 +11,10 @@ class ContactsApi {
         return axios.delete('api/contacts/' + uuid);
     }
 
+    save(contact) {
+        return axios.post('api/contacts', contact);
+    }
+
     transform(data) {
         return data.reduce((aggregation, current) => {
             var letter = current.firstName.toUpperCase()[0];

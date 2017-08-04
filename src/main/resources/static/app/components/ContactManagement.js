@@ -25,14 +25,6 @@ class ContactManagement extends React.Component {
         }
     };
 
-    handleFirstNameChange(text) {
-        this.setState({firstName: text});
-    }
-
-    handleLastNameChange(text) {
-        this.setState({lastName: text});
-    }
-
     render() {
         return (
             <ResponsiveContainer>
@@ -75,7 +67,7 @@ class ContactManagement extends React.Component {
                     <ModalDialogCloseButton />
                     <Button text="Save changes"
                             customClasses="btn-primary"
-                            onClick={ () => console.log(this.state) }/>
+                            onClick={ () => this.props.onSaveContactClick(this.state) }/>
                 </ModalDialogFooter>
             </ResponsiveContainer>
         );

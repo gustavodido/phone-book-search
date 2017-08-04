@@ -27,3 +27,4 @@ npm WARN prefer global npm@2.14.12 should be installed with -g
 Refetching data fter you perform an operation
 Fazer o search né
 Put argument captors
+Shutdown gracefully

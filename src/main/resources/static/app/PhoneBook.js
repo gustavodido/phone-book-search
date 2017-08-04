@@ -57,7 +57,10 @@ class PhoneBook extends React.Component {
     }
 
     handleOnSaveContactClick(contact) {
-        console.log(contact);
+        var self = this;
+        var api = new ContactsApi();
+        api.save(contact)
+            .then((response) => self.refreshSearchResults());
     }
 
     render() {
