@@ -6,6 +6,8 @@ import Column from '../containers/Column.js'
 import ModalDialogFooter from '../containers/modal/ModalDialogFooter.js'
 import ModalDialogCloseButton from '../containers/modal/ModalDialogCloseButton.js'
 
+import Button from '../elements/Button.js'
+
 const ContactProfile = (props) => {
 
     const formatPhone = (phone, type, badge) => {
@@ -42,6 +44,9 @@ const ContactProfile = (props) => {
             </Row>
             <ModalDialogFooter>
                 <ModalDialogCloseButton />
+                <Button text="Edit"
+                        customClasses="btn-primary"
+                        onClick={ () => props.onEditButtonClick() } />
             </ModalDialogFooter>
         </ResponsiveContainer>
     );

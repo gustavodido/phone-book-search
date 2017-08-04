@@ -11,6 +11,7 @@ const PhoneField = (props) => {
             <Label text={ props.label }></Label>
             <TextInput customClasses="text-right"
                        placeHolder="ex: +55 (54) 99625 3909"
+                       value={ props.value }
                        onChange={ (text) => props.onChange(text) }
             />
         </InputGroup>

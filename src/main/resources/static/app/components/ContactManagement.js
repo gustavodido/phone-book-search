@@ -16,14 +16,28 @@ import PhoneField from './PhoneField.js'
 class ContactManagement extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
+            uuid: "",
             firstName: "",
             lastName: "",
+            fullName: "",
             homePhone: "",
             workPhone: "",
             mobilePhone: ""
-        }
-    };
+        };
+
+        this.baseState = Object.assign({}, this.state);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState(this.baseState);
+        this.setState(nextProps.contact);
+    }
+
+    handleOnClick(e) {
+        this.props.onSaveContactClick(this.state);
+    }
 
     render() {
         return (
@@ -34,6 +48,7 @@ class ContactManagement extends React.Component {
                             <label for="firstName">First name:</label>
                             <TextInput id="firstName"
                                        placeholder="ex: Gustavo"
+                                       value={ this.state.firstName }
                                        onChange={ (text) => this.setState({ firstName: text } ) }/>
                         </FormGroup>
                     </Column>
@@ -42,6 +57,7 @@ class ContactManagement extends React.Component {
                             <label for="lastName">Last name:</label>
                             <TextInput id="lastName"
                                        placeholder="ex: Domenico"
+                                       value={ this.state.lastName }
                                        onChange={ (text) => this.setState({ lastName: text } ) }/>
                         </FormGroup>
                     </Column>
@@ -52,10 +68,14 @@ class ContactManagement extends React.Component {
                             <ResponsiveContainer>
                                 <Column size="2"></Column>
                                 <Column size="8">
-                                    <PhoneField label="Home" onChange={ (text) => this.setState({ homePhone: text }) }/>
+                                    <PhoneField label="Home"
+                                                value={ this.state.homePhone }
+                                                onChange={ (text) => this.setState({ homePhone: text }) }/>
                                     <PhoneField label="Work"
+                                                value={ this.state.workPhone }
                                                 onChange={ (text) => this.setState({ workPhone: text } ) }/>
                                     <PhoneField label="Mobile"
+                                                value={ this.state.mobilePhone }
                                                 onChange={ (text) => this.setState({ mobilePhone: text } ) }/>
                                 </Column>
                                 <Column size="2"></Column>
@@ -67,7 +87,7 @@ class ContactManagement extends React.Component {
                     <ModalDialogCloseButton />
                     <Button text="Save changes"
                             customClasses="btn-primary"
-                            onClick={ () => this.props.onSaveContactClick(this.state) }/>
+                            onClick={ this.handleOnClick.bind(this) }/>
                 </ModalDialogFooter>
             </ResponsiveContainer>
         );

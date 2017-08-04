@@ -53,7 +53,12 @@ class PhoneBook extends React.Component {
     }
 
     handleOnAddContactClick() {
-        $("#contact-management").modal("show");
+        this.setState({ selectedContact: {} });
+        $("#contact-management").modal();
+    }
+
+    handleOnEditButtonClick() {
+        $("#contact-management").modal();
     }
 
     handleOnSaveContactClick(contact) {
@@ -75,9 +80,10 @@ class PhoneBook extends React.Component {
                                   onContactRemoveClick={ (contact) => this.handleOnContactRemoveClick(contact) }/>
                 </ResponsiveContainer>
                 <ModalDialog title={ this.state.selectedContact.fullName } modal="contact-profile">
-                    <ContactProfile contact={ this.state.selectedContact }/>
+                    <ContactProfile contact={ this.state.selectedContact }
+                                    onEditButtonClick={ () => this.handleOnEditButtonClick() }/>
                 </ModalDialog>
-                <ModalDialog title="Add new contact" modal="contact-management">
+                <ModalDialog title="Contact Management" modal="contact-management">
                     <ContactManagement contact={ this.state.selectedContact }
                                        onSaveContactClick={ (contact) => this.handleOnSaveContactClick(contact) } />
                 </ModalDialog>

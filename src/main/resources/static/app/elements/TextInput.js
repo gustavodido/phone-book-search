@@ -6,6 +6,7 @@ const TextInput = (props) => {
                className={"form-control " + props.customClasses }
                placeholder={ props.placeHolder}
                id={ props.id }
+               value={ props.value }
                onChange={ (e) => props.onChange(e.target.value) }
         />
     );
