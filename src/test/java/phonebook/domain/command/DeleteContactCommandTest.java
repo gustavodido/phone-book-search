@@ -29,6 +29,10 @@ public class DeleteContactCommandTest {
         deleteContactCommand.run(gustavo.getUuid());
 
         verify(jdbcTemplate).update(anyString(), eq(gustavo.getUuid()));
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldValidateAllArguments() {
+        deleteContactCommand.run(null);
     }
 }

@@ -1,13 +1,16 @@
 package phonebook.controller;
 
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import phonebook.domain.command.DeleteContactCommand;
+import phonebook.domain.command.SaveContactCommand;
 import phonebook.domain.query.ContactsQuery;
 
 import static common.Constants.gustavo;
@@ -18,6 +21,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,6 +38,9 @@ public class ContactControllerTest {
 
     @MockBean
     private DeleteContactCommand deleteContactCommand;
+
+    @MockBean
+    private SaveContactCommand saveContactCommand;
 
     @Test
     public void contactsShouldListAllContacts() throws Exception {
@@ -58,4 +65,19 @@ public class ContactControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void contactShouldBeAdded() throws Exception {
+        when(saveContactCommand.run(gustavo)).thenReturn(gustavo.getUuid());
+
+        Gson serializer = new Gson();
+        String json = serializer.toJson(gustavo);
+
+        mockMvc.perform(post("/api/contacts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
 }

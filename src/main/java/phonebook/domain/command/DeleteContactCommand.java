@@ -3,9 +3,10 @@ package phonebook.domain.command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import java.util.UUID;
+
+import static org.springframework.util.Assert.notNull;
 
 @Component
 public class DeleteContactCommand {
@@ -20,7 +21,7 @@ public class DeleteContactCommand {
     }
 
     public void run(UUID uuid) {
-        Assert.notNull(uuid, "You must pass a contact UUID to the delete command.");
+        notNull(uuid, "You must pass a contact UUID to the delete command.");
 
         jdbcTemplate.update(SQL_COMMAND, uuid);
     }
